@@ -30,3 +30,4 @@ To create a global destination where everyone can discover, enjoy and experience
 ECHOAGA — Listen beyond imagination.
 
 Stories. Knowledge. Inspiration. Entertainment.
+![ECHOAGA Brand Banner](assets/file_000000000c60820bb6da2a2625d183a5.png)
