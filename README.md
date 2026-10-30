@@ -1,3 +1,9 @@
+
+<div align="center">
+
+<img src="assets/file_000000001ae4820b8ba88e1e7d876865.png" alt="ECHOAGA Logo" width="280">
+
+</div>
 # ECHOAGA
 ECHOAGA is a global audiobook and audio storytelling platform. Discover stories, explore new worlds, and experience the magic of listening. Listen beyond imagination.
 ECHOAGA
