@@ -1,16 +1,194 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ECHOAGA — Listen Beyond Imagination</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080807">
+<title>ECHOAGA — Listen Beyond Imagination</title>
+<meta name="description" content="Discover extraordinary audiobooks and stories with ECHOAGA.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <script src="script.js"></script>
-  <script type="module" src="firebase.js"></script>
+<header>
+<a href="#" class="logo">ECHOAGA</a>
+<nav id="nav">
+<a href="#" onclick="closeMenu()">Home</a>
+<a href="#featured" onclick="closeMenu()">Featured</a>
+<a href="#discover" onclick="closeMenu()">Discover</a>
+<a href="#about" onclick="closeMenu()">About</a>
+</nav>
+<div class="header-right">
+<a href="#discover" class="header-button">Explore collection</a>
+<span class="user-pill" id="userPill"><span id="userLabel">Account</span></span>
+<button class="account-button" id="accountButton" onclick="openAuth()">Sign in</button>
+<button class="logout-button" id="logoutButton" onclick="logoutUser()">Log out</button>
+<button class="menu" onclick="document.getElementById('nav').classList.toggle('open')" aria-label="Open menu">☰</button>
+</div>
+</header>
+<main>
+<div class="hero">
+<div class="hero-content">
+<div class="eyebrow">The art of listening</div>
+<h1>Enter a world<br>of <span>stories.</span></h1>
+<p>Extraordinary stories. Remarkable voices. Endless imagination. Discover your next unforgettable listening experience.</p>
+<a href="#discover" class="gold-btn">EXPLORE THE WORLD →</a>
+<a href="#featured" class="text-btn">Discover more</a>
+</div>
+<div class="hero-note">EVERY STORY HAS A WORLD.</div>
+</div>
+<section class="featured" id="featured">
+<div class="featured-grid">
+<div class="feature-art">
+<strong>THE<br>UNSEEN<br>WORLD<small>AN ECHOAGA ORIGINAL CONCEPT</small></strong>
+</div>
+<div class="feature-copy">
+<div class="kicker">Editor's selection</div>
+<h2>Beyond the ordinary.</h2>
+<p>Step into extraordinary worlds through unforgettable stories. Explore our featured collection and discover something new to inspire your imagination.</p>
+<a href="#discover" class="gold-btn">EXPLORE STORIES</a>
+</div>
+</div>
+</section>
+<section id="discover">
+<div class="section-head">
+<div class="kicker">Curated for curious minds</div>
+<h2>Explore the collection</h2>
+<p class="sub">Find the story that speaks to you.</p>
+</div>
+<input class="search" id="search" type="search" placeholder="Search titles or genres..." oninput="filterBooks()">
+<div class="filters">
+<button class="filter active" onclick="setFilter('All',this)">All stories</button>
+<button class="filter" onclick="setFilter('Adventure',this)">Adventure</button>
+<button class="filter" onclick="setFilter('Wisdom',this)">Wisdom</button>
+<button class="filter" onclick="setFilter('Mystery',this)">Mystery</button>
+<button class="filter" onclick="setFilter('Fantasy',this)">Fantasy</button>
+</div>
+<div class="book-grid" id="books">
+<article class="book" data-genre="Adventure" data-name="Beyond the Stars Adventure">
+<div class="cover c1"><strong>BEYOND<br>THE STARS</strong><small>A COSMIC JOURNEY</small></div>
+<h3>Beyond the Stars</h3><p>Adventure · Demo book</p>
+<button class="listen" onclick="selectBook('Beyond the Stars','Adventure')">＋ Add to listening</button>
+</article>
+<article class="book" data-genre="Wisdom" data-name="Timeless Wisdom">
+<div class="cover c2"><strong>TIMELESS<br>WISDOM</strong><small>LESSONS FOR LIFE</small></div>
+<h3>Timeless Wisdom</h3><p>Wisdom · Demo book</p>
+<button class="listen" onclick="selectBook('Timeless Wisdom','Wisdom')">＋ Add to listening</button>
+</article>
+<article class="book" data-genre="Adventure" data-name="The Great Journey">
+<div class="cover c3"><strong>THE GREAT<br>JOURNEY</strong><small>FIND YOUR PATH</small></div>
+<h3>The Great Journey</h3><p>Adventure · Demo book</p>
+<button class="listen" onclick="selectBook('The Great Journey','Adventure')">＋ Add to listening</button>
+</article>
+<article class="book" data-genre="Fantasy" data-name="Quiet Moments">
+<div class="cover c4"><strong>QUIET<br>MOMENTS</strong><small>FIND YOUR CALM</small></div>
+<h3>Quiet Moments</h3><p>Fantasy · Demo book</p>
+<button class="listen" onclick="selectBook('Quiet Moments','Fantasy')">＋ Add to listening</button>
+</article>
+<article class="book" data-genre="Mystery" data-name="Silent Secrets">
+<div class="cover c5"><strong>SILENT<br>SECRETS</strong><small>NOTHING IS HIDDEN</small></div>
+<h3>Silent Secrets</h3><p>Mystery · Demo book</p>
+<button class="listen" onclick="selectBook('Silent Secrets','Mystery')">＋ Add to listening</button>
+</article>
+<article class="book" data-genre="Fantasy" data-name="Dream Beyond">
+<div class="cover c6"><strong>DREAM<br>BEYOND</strong><small>WORLDS UNKNOWN</small></div>
+<h3>Dream Beyond</h3><p>Fantasy · Demo book</p>
+<button class="listen" onclick="selectBook('Dream Beyond','Fantasy')">＋ Add to listening</button>
+</article>
+<article class="book" data-genre="Wisdom" data-name="The Art of Living">
+<div class="cover c7"><strong>THE ART<br>OF LIVING</strong><small>A NEW PERSPECTIVE</small></div>
+<h3>The Art of Living</h3><p>Wisdom · Demo book</p>
+<button class="listen" onclick="selectBook('The Art of Living','Wisdom')">＋ Add to listening</button>
+</article>
+<article class="book" data-genre="Adventure" data-name="Unknown Horizons">
+<div class="cover c8"><strong>UNKNOWN<br>HORIZONS</strong><small>BEYOND THE ORDINARY</small></div>
+<h3>Unknown Horizons</h3><p>Adventure · Demo book</p>
+<button class="listen" onclick="selectBook('Unknown Horizons','Adventure')">＋ Add to listening</button>
+</article>
+</div>
+<p class="empty" id="empty">No stories found. Try another search.</p>
+</section>
+<section class="benefits">
+<div class="kicker">Designed around you</div>
+<h2>A more personal way to listen.</h2>
+<div class="benefit-grid">
+<div class="benefit"><div class="icon">◉</div><h3>Immersive listening</h3><p>A thoughtful listening experience that puts the story first.</p></div>
+<div class="benefit"><div class="icon">✧</div><h3>Discover something new</h3><p>Explore adventure, knowledge, imagination and inspiration.</p></div>
+<div class="benefit"><div class="icon">♡</div><h3>Your listening world</h3><p>Sign in to your ECHOAGA account and make this experience yours.</p></div>
+</div>
+</section>
+<section class="about" id="about">
+<div class="kicker">Welcome to ECHOAGA</div>
+<h2>Listen beyond imagination.</h2>
+<p>ECHOAGA is a world of stories brought to life through sound. Our vision is to bring audiobooks, inspiring voices and immersive storytelling together in one place. Every story deserves to be heard.</p>
+<a href="#discover" class="gold-btn">DISCOVER ECHOAGA</a>
+</section>
+</main>
+<footer>
+<div class="logo">ECHOAGA</div>
+<p>LISTEN BEYOND IMAGINATION.</p>
+<p>© <span id="year"></span> ECHOAGA. All rights reserved.</p>
+</footer>
+<div class="player" id="player">
+<div class="player-info">
+<strong id="playerTitle">Selected story</strong>
+<small id="playerGenre">Audiobook</small>
+</div>
+<button onclick="alert('Real audio will be connected when authorized audio files are added.')" aria-label="Play">▶</button>
+<button class="close" onclick="document.getElementById('player').style.display='none'">×</button>
+</div>
+<div class="auth-overlay" id="authOverlay" role="dialog" aria-modal="true" aria-labelledby="authHeading" onclick="overlayClose(event)">
+<div class="auth-card">
+<button class="auth-close" onclick="closeAuth()" aria-label="Close">×</button>
+<div class="auth-brand">ECHOAGA</div>
+<p class="auth-intro" id="authHeading">Your listening world, all in one place.</p>
+<div class="auth-tabs">
+<button class="auth-tab active" id="loginTab" onclick="switchAuth('login')">SIGN IN</button>
+<button class="auth-tab" id="signupTab" onclick="switchAuth('signup')">CREATE ACCOUNT</button>
+</div>
+<div class="auth-message" id="authMessage" role="status"></div>
+<form class="auth-form active" id="loginForm">
+<div class="field">
+<label for="loginEmail">EMAIL ADDRESS</label>
+<input id="loginEmail" type="email" autocomplete="email" placeholder="you@example.com" required>
+</div>
+<div class="field">
+<label for="loginPassword">PASSWORD</label>
+<div class="password-wrap">
+<input id="loginPassword" type="password" autocomplete="current-password" placeholder="Your password" required minlength="6">
+<button class="password-toggle" type="button" onclick="togglePassword('loginPassword',this)">SHOW</button>
+</div>
+</div>
+<button class="auth-submit" type="submit" id="loginSubmit">SIGN IN TO ECHOAGA</button>
+<button class="auth-link" type="button" onclick="resetPassword()">Forgot your password?</button>
+</form>
+<form class="auth-form" id="signupForm">
+<div class="field">
+<label for="signupName">YOUR NAME</label>
+<input id="signupName" type="text" autocomplete="name" placeholder="Your name" required maxlength="60">
+</div>
+<div class="field">
+<label for="signupEmail">EMAIL ADDRESS</label>
+<input id="signupEmail" type="email" autocomplete="email" placeholder="you@example.com" required>
+</div>
+<div class="field">
+<label for="signupPassword">CREATE PASSWORD</label>
+<div class="password-wrap">
+<input id="signupPassword" type="password" autocomplete="new-password" placeholder="At least 6 characters" required minlength="6">
+<button class="password-toggle" type="button" onclick="togglePassword('signupPassword',this)">SHOW</button>
+</div>
+</div>
+<button class="auth-submit" type="submit" id="signupSubmit">CREATE MY ACCOUNT</button>
+</form>
+<div class="auth-divider">OR CONTINUE WITH</div>
+<button class="google-button" id="googleButton" onclick="googleSignIn()"><span class="google-mark">G</span> Continue with Google</button>
+<p class="auth-note">By continuing, you agree to use ECHOAGA respectfully. Your account is secured by Firebase Authentication.</p>
+</div>
+</div>
+<script src="script.js"></script>
+<script type="module" src="firebase.js"></script>
 </body>
 </html>
