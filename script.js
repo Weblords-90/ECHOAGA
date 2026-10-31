@@ -320,3 +320,31 @@ window.closeProfileMenu = closeProfileMenu;
 window.showProfile = showProfile;
 window.showListeningActivity = showListeningActivity;
 window.showAccountSettings = showAccountSettings;
+document.addEventListener("DOMContentLoaded", () => {
+  const userPill = document.getElementById("userPill");
+  const profileName = document.getElementById("profileName");
+  const userLabel = document.getElementById("userLabel");
+
+  if (userPill) {
+    userPill.style.cursor = "pointer";
+
+    userPill.addEventListener("click", event => {
+      event.stopPropagation();
+      toggleProfileMenu();
+    });
+  }
+
+  if (profileName && userLabel) {
+    const updateProfileName = () => {
+      profileName.textContent = userLabel.textContent || "My Account";
+    };
+
+    updateProfileName();
+
+    new MutationObserver(updateProfileName).observe(userLabel, {
+      childList: true,
+      characterData: true,
+      subtree: true
+    });
+  }
+});
