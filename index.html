@@ -17,6 +17,17 @@
   <span class="user-pill" id="userPill">
   <span id="userLabel">Account</span>
 </span>
+  <div class="profile-menu" id="profileMenu">
+  <div class="profile-menu-header">
+    <strong id="profileName">My Account</strong>
+    <span id="profileEmail">Your ECHOAGA account</span>
+  </div>
+
+  <button onclick="showProfile()">View Profile</button>
+  <button onclick="showListeningActivity()">Listening Activity</button>
+  <button onclick="showAccountSettings()">Account Settings</button>
+  <button onclick="logoutUser()">Log Out</button>
+  </div>
 <button class="account-button" id="accountButton" onclick="openAuth()">Sign in</button>
 <button class="logout-button" id="logoutButton" onclick="logoutUser()">Log out</button>
 <a href="#" class="logo">ECHOAGA</a>
