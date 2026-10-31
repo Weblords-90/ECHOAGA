@@ -275,3 +275,48 @@ window.setBusy = setBusy;
 window.closeMenu = closeMenu;
 window.toggleMenu = toggleMenu;
 window.closePlayer = closePlayer;
+function toggleProfileMenu() {
+  const menu = document.getElementById("profileMenu");
+  if (!menu) return;
+  menu.classList.toggle("show");
+}
+
+function closeProfileMenu() {
+  const menu = document.getElementById("profileMenu");
+  if (menu) menu.classList.remove("show");
+}
+
+function showProfile() {
+  closeProfileMenu();
+  alert("Your ECHOAGA profile is coming soon.");
+}
+
+function showListeningActivity() {
+  closeProfileMenu();
+  alert("Your listening activity will be available soon.");
+}
+
+function showAccountSettings() {
+  closeProfileMenu();
+  alert("Account settings are coming soon.");
+}
+
+document.addEventListener("click", event => {
+  const menu = document.getElementById("profileMenu");
+  const pill = document.getElementById("userPill");
+
+  if (
+    menu &&
+    !menu.contains(event.target) &&
+    pill &&
+    !pill.contains(event.target)
+  ) {
+    closeProfileMenu();
+  }
+});
+
+window.toggleProfileMenu = toggleProfileMenu;
+window.closeProfileMenu = closeProfileMenu;
+window.showProfile = showProfile;
+window.showListeningActivity = showListeningActivity;
+window.showAccountSettings = showAccountSettings;
