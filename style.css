@@ -1583,3 +1583,174 @@ button:disabled {
     transition: none;
   }
 }
+/* ECHOAGA HEADER REFINEMENT */
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 500;
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 16px 6%;
+  background: rgba(8,13,11,.96);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+}
+
+header > .logo {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+header > nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  flex: 1;
+  min-width: 0;
+}
+
+header > nav a {
+  color: #a5b2a8;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: color .25s ease;
+}
+
+header > nav a:hover {
+  color: #d5b77e;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-shrink: 0;
+  gap: 10px;
+}
+
+#userPill {
+  max-width: 155px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  border: 1px solid rgba(199,169,117,.25);
+  background: #151a16;
+  color: #e9dfcb;
+  transition: border-color .25s ease, background .25s ease;
+}
+
+#userPill:hover {
+  border-color: #c5a875;
+  background: #20251f;
+}
+
+#logoutButton {
+  display: none !important;
+}
+
+.profile-menu {
+  top: calc(100% + 12px);
+  right: 5%;
+}
+
+.menu {
+  flex-shrink: 0;
+  font-size: 25px;
+  padding: 5px;
+  color: #e8e5dc;
+}
+
+@media(max-width:760px) {
+  header {
+    padding: 13px 5%;
+    gap: 8px;
+  }
+
+  header > .logo {
+    font-size: 1.25rem;
+    letter-spacing: 1.5px;
+  }
+
+  header > nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    display: none;
+    flex: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 12px 6% 18px;
+    background: rgba(10,15,11,.98);
+    border-bottom: 1px solid rgba(199,169,117,.18);
+  }
+
+  header > nav.open {
+    display: flex;
+    animation: echoProfileIn .25s ease both;
+  }
+
+  header > nav a {
+    padding: 13px 5px;
+    border-bottom: 1px solid rgba(255,255,255,.05);
+  }
+
+  .header-right {
+    gap: 7px;
+  }
+
+  .header-button {
+    display: none;
+  }
+
+  #userPill {
+    max-width: 105px;
+    padding: 8px 11px;
+    font-size: 11px;
+  }
+
+  #accountButton {
+    padding: 8px 12px;
+    min-height: 36px;
+    font-size: 12px;
+  }
+
+  .menu {
+    display: block;
+  }
+
+  .profile-menu {
+    right: 4%;
+    width: min(285px,92vw);
+  }
+}
+
+@media(max-width:380px) {
+  header {
+    gap: 5px;
+    padding-inline: 4%;
+  }
+
+  header > .logo {
+    font-size: 1.05rem;
+  }
+
+  #userPill {
+    max-width: 82px;
+  }
+
+  .header-right {
+    gap: 5px;
+  }
+}
